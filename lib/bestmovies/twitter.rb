@@ -2,7 +2,7 @@
 
 module BestMovies::Twitter
   def self.update_with_best_movies_between(size=2, channel_group, begins, ends, time, update_twitter)
-    twitter = BestMovies::Twitter.auth
+    twitter = BestMovies::Twitter.auth if update_twitter == "true"
 
     # Gambiarra horrível para o horário de verão
     begins = begins + (60*60)
