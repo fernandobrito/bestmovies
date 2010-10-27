@@ -44,7 +44,7 @@ TODO: Write about how to authenticate with your Twitter account
 
 * Now that you have the movies, you can update Twitter with the best movies
 
-    rake twitter:update GROUP=Telecine TIME=Madrugada TOP=2 UPDATE=true --trace
+    rake twitter:update GROUP=Telecine TIME=Afternoon TOP=2 UPDATE=false --trace
 
   Options are:
     * GROUP: HBO, Telecine, HD, Others, All  (Default: All)
