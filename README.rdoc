@@ -22,7 +22,7 @@ Made with Ruby 1.9.
 
   rake database:create
 
-== Testing
+=== Testing
 
 You should run the specs after installing, just to check if everything is fine.
 
