@@ -2,14 +2,14 @@
 
 === Warning
 
-  This code is very personal and was made by someone that doesn't code very well :P
-  You should NOT use this to learn how to programm.
+This code is very personal and was made by someone that doesn't code very well :P
+You should NOT use this to learn how to programm.
 
-  Be advised, because you will find some really weird things in the source. :D
+Be advised, because you will find some really weird things in the source. :D
 
 === Description
 
-  Ruby project that scraps the HBO, Telecine and other movies channel schedule from Hagah.com.br and then searches for movies rating in IMDb.
+Ruby project that scraps the HBO, Telecine and other movies channel schedule from Hagah.com.br and then searches for movies rating in IMDb.
 
 === Instalation
 
@@ -24,7 +24,7 @@ Made with Ruby 1.9.
 
 == Testing
 
-You can run the specs if you want
+You should run the specs after installing, just to check if everything is fine.
 
   rake spec
 
