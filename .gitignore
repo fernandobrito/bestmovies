@@ -1,0 +1,4 @@
+.twitter
+.rvmrc
+.bundle/*
+db/database.db

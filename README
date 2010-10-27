@@ -1,0 +1,55 @@
+== BestMovies
+
+=== Warning
+
+  This code is very personal and was made by someone that doesn't code very well :P
+  You should NOT use this to learn how to programm.
+
+  Be advised, because you will find some really weird things in the source. :D
+
+=== Description
+
+  Ruby project that scraps the HBO, Telecine and other movies channel schedule from Hagah.com.br and then searches for movies rating in IMDb.
+
+=== Instalation
+
+Made with Ruby 1.9.
+
+  git clone git://github.com/fernandobrito/bestmovies.git
+  cd bestmovies
+
+  bundle install
+
+  rake database:create
+
+== Testing
+
+You can run the specs if you want
+
+  rake spec
+
+=== Usage
+
+Check out the movie groups in <tt>lib/helpers/urls.rb</tt>
+
+TODO: Write about how to authenticate with your Twitter account
+
+* First you have to scrap the movies from Hagah.com.br
+
+    rake scrapping:scrap --trace
+
+  By default this will scrap the movies from group "All" from today and for the next 2 days. You can override this with
+
+    rake scrapping:scrap GROUP=HBO DAYS=5 --trace
+
+* Now that you have the movies, you can update Twitter with the best movies
+
+    rake twitter:update GROUP=Telecine TIME=Madrugada TOP=2 UPDATE=true --trace
+
+  Options are:
+    * GROUP: HBO, Telecine, HD, Others, All  (Default: All)
+    * TIME: Dawn, Morning, Afternoon, Night  (Default: Night)
+    * TOP: If you choose 5, it will tweet the best 5 movies (Default: 2)
+    * UPDATE: "true" if you really want to update the Twitter, "false" for just printing the movies in the console (Default: false)
+    * DATE: If you want to tweet the best movies for the next day. Usually good when GROUP is "Dawn" (Format: dd/mm/yy) (Default: today's date)
+
