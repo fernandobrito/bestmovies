@@ -2,7 +2,7 @@
 
 === Warning
 
-This code is very personal and was made by someone that doesn't code very well :P
+This project is very personal and was made by someone that doesn't code very well :P
 You should NOT use this to learn how to programm.
 
 Be advised, because you will find some really weird things in the source. :D
