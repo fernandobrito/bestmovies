@@ -10,7 +10,8 @@ Be advised, because you will find some really weird things in the source. :D
 === Description
 
 Ruby project that scraps the HBO, Telecine and other movies channel schedule from Hagah.com.br and then searches for movies rating in IMDb.
-It is currently being used in {O Que Vai Passar}[http://fernandobrito.com/oquevaipassar] project, updating the {@OQueVaiPassar}[http://twitter.com/oquevaipassar] Twitter profile.
+
+It is currently being used in the {O Que Vai Passar}[http://fernandobrito.com/oquevaipassar] project, updating the {@OQueVaiPassar}[http://twitter.com/oquevaipassar] Twitter profile.
 
 === Instalation
 
