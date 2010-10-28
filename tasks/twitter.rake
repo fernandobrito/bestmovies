@@ -14,12 +14,16 @@ namespace :twitter do
     case time
     when "Dawn"
       begins = Time.parse(date.strftime("%d/%m/%Y 00:00"))
+      time = "Madrugada"
     when "Morning"
       begins = Time.parse(date.strftime("%d/%m/%Y 06:00"))
+      time = "Manhã"
     when "Afternoon"
       begins = Time.parse(date.strftime("%d/%m/%Y 12:00"))
+      time = "Tarde"
     when "Night"
       begins = Time.parse(date.strftime("%d/%m/%Y 18:00"))
+      time = "Noite"
     else
       raise "Time not found. Dawn | Morning | Afternoon | Night"
     end
