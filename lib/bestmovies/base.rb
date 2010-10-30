@@ -25,7 +25,6 @@ module BestMovies
       channels.each do |channel_name, channel_url|
 
         # goes to the channels page
-
         page = nil
         try 5 do
           page = agent.get(channel_url + "&data=#{date.strftime('%d/%m/%Y')}")
@@ -34,7 +33,6 @@ module BestMovies
         # find the object in the database
         channel_object = Channel.first_or_create(:name => channel_name)
 
-        # LOG
         puts "\n"
         puts "*" * 50
         puts "---- Channel: #{channel_name} - Date: #{date.strftime('%d/%m/%Y')}"
@@ -65,7 +63,7 @@ module BestMovies
 
           # if there is no movie, creates it
           if movie
-            puts "\n-- Movie #{movie.title} found in our database."
+            puts "-- Movie #{movie.title} found in our database."
           else
             movie = info[:movie]
 
