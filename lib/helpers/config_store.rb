@@ -1,3 +1,6 @@
+# This class was not written by me
+# Credit: http://railstips.org/blog/archives/2009/04/05/twitter-gem-reborn-with-fewer-features-and-100-more-oauth/
+
 class ConfigStore
   attr_reader :file
 
