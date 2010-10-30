@@ -3,9 +3,9 @@
 === Warning
 
 This project is very personal and was made by someone that doesn't code very well :P
-You should NOT use this to learn how to programm.
+You should NOT use it as example and to learn how to programm.
 
-Be advised, because you will find some really weird things in the source. :D
+Be advised, because you will find some really weird things in the source code. :D
 
 === Description
 
