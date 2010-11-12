@@ -5,7 +5,7 @@ def url(codigo)
 end
 
 URL_HBO = { "HBO" => url("HBO"),
-            "HBO e" => url("HBE"),
+            "HBO e" => url("HB2"),
             "HBO Family" => url("HFA"),
             "HBO Family e" => url("HFE"),
             "HBO Plus" => url("HPL"),
