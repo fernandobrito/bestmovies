@@ -90,26 +90,28 @@ module BestMovies::Scrap
       end
     end
 
-    # log
-    puts "--- Result was not found. Going to try the 2nd method (director: #{movie.director.split(",").first})"
-
-    # second iteraction: go into every movie page and checks the director
-    for result in results[0...7]
-
-      imdb_movie = nil
-      try 5 do
-        imdb_movie = imdb.find_movie_by_id(result[:imdb_id])
-      end
-
+    if movie.director
       # log
-      puts "-- Result: #{imdb_movie.directors.map(&:name).to_s}"
+      puts "--- Result was not found. Going to try the 2nd method (director: #{movie.director.split(",").first})"
 
-      if movie.director and imdb_movie.directors.map(&:name).include? movie.director.split(",").first
+      # second iteraction: go into every movie page and checks the director
+      for result in results[0...7]
+
+        imdb_movie = nil
+        try 5 do
+          imdb_movie = imdb.find_movie_by_id(result[:imdb_id])
+        end
 
         # log
-        puts "===> 2. Director match! Score: " + imdb_movie.rating.to_s
+        puts "-- Result: #{imdb_movie.directors.map(&:name).to_s}"
 
-        return imdb_movie.rating.to_s
+        if movie.director and imdb_movie.directors.map(&:name).include? movie.director.split(",").first
+
+          # log
+          puts "===> 2. Director match! Score: " + imdb_movie.rating.to_s
+
+          return imdb_movie.rating.to_s
+        end
       end
     end
 
