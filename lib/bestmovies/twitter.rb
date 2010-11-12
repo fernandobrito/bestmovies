@@ -41,7 +41,7 @@ module BestMovies::Twitter
       # If it still too long, we have to remove the last chars of the movie title
       if output.size > 140
         max_title_size = -(output.size - event.movie.title.size - 140)
-        output = "[ #{time} ] #{(event.begins-60*60).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title[0...47]}... .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name} .:. [GMT -3]"
+        output = "[ #{time} ] #{(event.begins-60*60).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title[0...max_title_size]}... .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name} .:. [GMT -3]"
       end
 
       puts "#{index+1}: #{output}"
