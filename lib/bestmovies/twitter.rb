@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 module BestMovies::Twitter
-  def self.update_with_best_movies_between(size=2, channel_group, begins, ends, time, update_twitter)
+  def self.update_with_best_movies_between(size=2, channel_group, rating, begins, ends, time, update_twitter)
     twitter = BestMovies::Twitter.auth if update_twitter == "true"
 
     # Gambiarra horrível para o horário de verão
@@ -24,17 +24,19 @@ module BestMovies::Twitter
     end
 
     events = Event.all(:begins.gte => begins, :begins.lte => ends, Event.channel.name => channels)
+    # I couldn't do this using DataMapper, so its done with Ruby -.-
     events = events.sort_by { |event| event.movie.score }.reverse[0...size]
+    events = events.delete_if { |event| event.movie.score <= rating }
 
     puts "-- Begins: #{begins.strftime('%d/%m/%Y %H:%M')}"
     puts "-- Ends: #{ends.strftime('%d/%m/%Y %H:%M')}\n"
 
     events.each_with_index do |event, index|
-	  
+
 			if event.movie.title.include?("HDTV -")
 				event.movie.title.gsub!("HDTV - ", "")
 			end
-      
+
 			# The message to be tweeted. By default it has the movie title (pt-BR) and the original movie title
       output = "[ #{time} ] #{(event.begins-60*60).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title} (#{event.movie.original_title}) .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name} .:. [GMT -3]"
 
@@ -53,6 +55,7 @@ module BestMovies::Twitter
 
       if update_twitter == "true"
       	twitter.update(output)
+      	puts ":: Twitter updated!"
       end
     end
   end
@@ -93,4 +96,3 @@ module BestMovies::Twitter
     end
   end
 end
-

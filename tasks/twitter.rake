@@ -7,9 +7,10 @@ namespace :twitter do
 
     group = (ARGV.find { |arg| /^GROUP/ =~ arg }.split("=").last           if ARGV.find { |arg| /^GROUP/ =~ arg })     || "All"
     time = (ARGV.find { |arg| /^TIME/ =~ arg }.split("=").last             if ARGV.find { |arg| /^TIME/ =~ arg })      || "Night"
-    top = (ARGV.find { |arg| /^TOP/ =~ arg }.split("=").last.to_i          if ARGV.find { |arg| /^TOP/ =~ arg })        || 2
+    top = (ARGV.find { |arg| /^TOP/ =~ arg }.split("=").last.to_i          if ARGV.find { |arg| /^TOP/ =~ arg })       || 2
     update_twitter = (ARGV.find { |arg| /^UPDATE/ =~ arg }.split("=").last if ARGV.find { |arg| /^UPDATE/ =~ arg })    || "false"
     date = (Time.parse(ARGV.find { |arg| /^DATE/ =~ arg }.split("=").last) if ARGV.find { |arg| /^DATE/ =~ arg })      || Time.now
+    rating = (ARGV.find { |arg| /^RATING/ =~ arg }.split("=").last.to_f    if ARGV.find { |arg| /^RATING/ =~ arg })    || 0
 
     case time
     when "Dawn"
@@ -30,8 +31,7 @@ namespace :twitter do
 
     ends = begins + (60 * 60 * 6) # 6 hours later
 
-    BestMovies::Twitter.update_with_best_movies_between(top, group, begins, ends, time, update_twitter)
+    BestMovies::Twitter.update_with_best_movies_between(top, group, rating, begins, ends, time, update_twitter)
   end
 
 end
-

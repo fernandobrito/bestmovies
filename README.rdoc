@@ -46,7 +46,7 @@ TODO: Write about how to authenticate with your Twitter account
 
 * Now that you have the movies, you can update Twitter with the best movies
 
-    rake twitter:update GROUP=Telecine TIME=Afternoon TOP=2 UPDATE=false --trace
+    rake twitter:update GROUP=Telecine TIME=Afternoon TOP=2 RATING=7.4 UPDATE=false --trace
 
   Options are:
     * GROUP: HBO, Telecine, HD, Others, All  (Default: All)
@@ -54,4 +54,4 @@ TODO: Write about how to authenticate with your Twitter account
     * TOP: If you choose 5, it will tweet the best 5 movies (Default: 2)
     * UPDATE: "true" if you really want to update the Twitter, "false" for just printing the movies in the console (Default: false)
     * DATE: If you want to tweet the best movies for the next day. Usually good when GROUP is "Dawn" (Format: dd/mm/yy) (Default: today's date)
-
+    * RATING: If you want to tweet movies with rating greater than X, use this param (Default: 0)
