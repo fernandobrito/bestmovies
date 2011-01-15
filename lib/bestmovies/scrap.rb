@@ -64,7 +64,7 @@ module BestMovies::Scrap
 
     results = nil
     try 5 do
-      results = imdb.find_by_title(search_query.fix_to_query).find_all {|movie| movie[:imdb_id] != nil}
+      results = imdb.find_by_title(search_query.fix_to_query).find_all {|m| m[:imdb_id] != nil}
     end
 
     puts "\n---- Searching for: #{search_query} (#{movie.year})"
@@ -143,4 +143,3 @@ module BestMovies::Scrap
     puts "!!!!! Movie #{movie.title} was not found :("
   end
 end
-
