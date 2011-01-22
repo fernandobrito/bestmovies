@@ -120,7 +120,7 @@ module BestMovies::Scrap
 
     # third iteraction: just like the second one, but now searching with the portuguese title
     if !movie.original_title.nil?  # if original_title is nil, the 2nd iteraction was made with the portuguese title already
-      results = imdb.find_by_title(movie.title.fix_to_query).find_all {|movie| movie[:imdb_id] != nil}
+      results = imdb.find_by_title(movie.title.fix_to_query).find_all {|m| m[:imdb_id] != nil}
 
       for result in results[0...7]
 
