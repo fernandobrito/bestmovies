@@ -1,6 +1,7 @@
 source :rubygems
 
 gem "twitter"
+gem "yajl-ruby"
 
 gem "dm-core"
 gem "dm-sqlite-adapter"

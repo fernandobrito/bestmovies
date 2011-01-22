@@ -3,6 +3,7 @@
 require "rubygems"
 require "bundler/setup"
 require "twitter"
+require "yajl"
 require "mechanize"
 require "imdb_party"
 
