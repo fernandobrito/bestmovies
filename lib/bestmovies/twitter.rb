@@ -4,10 +4,6 @@ module BestMovies::Twitter
   def self.update_with_best_movies_between(size=2, channel_group, rating, begins, ends, time, update_twitter)
     twitter = BestMovies::Twitter.auth if update_twitter == "true"
 
-    # Gambiarra horrível para o horário de verão
-    begins = begins + (60*60)
-    ends = ends + (60*60)
-
     case channel_group
     when "HBO"
       channels = URL_HBO.keys
