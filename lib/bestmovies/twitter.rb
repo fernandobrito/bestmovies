@@ -34,17 +34,17 @@ module BestMovies::Twitter
 			end
 
 			# The message to be tweeted. By default it has the movie title (pt-BR) and the original movie title
-      output = "[ #{time} ] #{(event.begins-60*60).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title} (#{event.movie.original_title}) .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
+      output = "[ #{time} ] #{(event.begins).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title} (#{event.movie.original_title}) .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
 
       # If there is no original title, or its the same as the normal title or the message is too big, remove the original_title
       if event.movie.original_title.nil? or event.movie.original_title == event.movie.title or output.size > 140
-        output = "[ #{time} ] #{(event.begins-60*60).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title} .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
+        output = "[ #{time} ] #{(event.begins).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title} .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
 			end
 
       # If it still too long, we have to remove the last chars of the movie title
       if output.size > 140
         max_title_size = -(output.size - event.movie.title.size - 137)
-        output = "[ #{time} ] #{(event.begins-60*60).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title[0...max_title_size]}... .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
+        output = "[ #{time} ] #{(event.begins).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title[0...max_title_size]}... .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
       end
 
       puts "#{index+1}: #{output}"
