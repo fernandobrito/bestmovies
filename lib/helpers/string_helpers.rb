@@ -34,7 +34,6 @@ class String
     string.gsub! /[uũûúùŨÛÚÙ]/, "u"
     string.gsub! /[cçÇ]/, "c"
     string.gsub! '"', " "
-    string.gsub! " ", "%20"
 
     string
   end
