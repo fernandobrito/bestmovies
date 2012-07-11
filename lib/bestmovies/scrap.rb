@@ -58,7 +58,7 @@ module BestMovies::Scrap
 
 
   def self.rating_from_imdb(movie)
-    imdb = ImdbParty::Imdb.new
+    imdb = ImdbParty::Imdb.new(:anonymize => true)
 
     search_query = movie.original_title || movie.title
 
