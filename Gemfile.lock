@@ -68,6 +68,7 @@ GEM
       unf_ext
     unf_ext (0.0.5)
     webrobots (0.0.13)
+    yajl-ruby (0.8.2)
 
 PLATFORMS
   ruby
@@ -82,3 +83,4 @@ DEPENDENCIES
   mechanize
   rspec
   twitter
+  yajl-ruby
