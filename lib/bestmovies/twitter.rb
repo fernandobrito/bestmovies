@@ -60,35 +60,24 @@ module BestMovies::Twitter
 
   def self.auth
     config = ConfigStore.new(File.join(File.dirname(__FILE__), '..', '..', '.twitter'))
-    oauth = Twitter::OAuth.new(config['token'], config['secret'])
 
     if config['atoken'] && config['asecret']
-      oauth.authorize_from_access(config['atoken'], config['asecret'])
-      twitter = Twitter::Base.new(oauth)
+
+      twitter = Twitter::Client.new(
+        :consumer_key => config['token'],
+        :consumer_secret => config['secret'],
+        :oauth_token => config['atoken'],
+        :oauth_token_secret => config['asecret']
+      )
 
       return twitter
 
     elsif config['rtoken'] && config['rsecret']
-      oauth.authorize_from_request(config['rtoken'], config['rsecret'])
-      twitter = Twitter::Base.new(oauth)
-
-      config.update({
-        'atoken'  => oauth.access_token.token,
-        'asecret' => oauth.access_token.secret,
-      }).delete('rtoken', 'rsecret')
-
-      return twitter
-
+      # not implemented
+      raise "you must configure your .twitter file"
     else
-      config.update({
-        'rtoken'  => oauth.request_token.token,
-        'rsecret' => oauth.request_token.secret,
-      })
-
-      # authorize in browser
-      %x(google-chrome #{oauth.request_token.authorize_url})
-
-      raise "voce precisa configurar o arquivo .twitter"
+      # not implemented
+      raise "you must configure your .twitter file"
     end
   end
 end
