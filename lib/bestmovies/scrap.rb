@@ -2,7 +2,6 @@
 
 module BestMovies::Scrap
   def self.movie_from_url(url)
-
     # start Mechanize
     agent = Mechanize.new
 
@@ -76,7 +75,7 @@ module BestMovies::Scrap
       puts "-- Result: #{result[:title]} (#{result[:year]})"
 
       # if the titles and the years are the same
-      if result[:title] and result[:title].downcase == search_query.downcase and result[:year] == movie.year.to_s
+      if result[:title] and result[:title].downcase == search_query.downcase and result[:year].to_s == movie.year.to_s
 
         imdb_movie = nil
         try 5 do
