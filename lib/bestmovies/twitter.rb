@@ -29,17 +29,17 @@ module BestMovies::Twitter
 
     events.each_with_index do |event, index|
 
-			if event.movie.title.include?("HDTV -")
-				event.movie.title.gsub!("HDTV - ", "")
-			end
+      if event.movie.title.include?("HDTV -")
+        event.movie.title.gsub!("HDTV - ", "")
+      end
 
-			# The message to be tweeted. By default it has the movie title (pt-BR) and the original movie title
+      # The message to be tweeted. By default it has the movie title (pt-BR) and the original movie title
       output = "[ #{time} ] #{(event.begins).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title} (#{event.movie.original_title}) .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
 
       # If there is no original title, or its the same as the normal title or the message is too big, remove the original_title
       if event.movie.original_title.nil? or event.movie.original_title == event.movie.title or output.size > 140
         output = "[ #{time} ] #{(event.begins).strftime('%H:%M')} .:. #{event.channel.name} .:. #{event.movie.title} .:. Nota: #{event.movie.score} .:. Ano: #{event.movie.year} .:. Gênero: #{event.movie.gender.name}"
-			end
+      end
 
       # If it still too long, we have to remove the last chars of the movie title
       if output.size > 140
@@ -50,8 +50,8 @@ module BestMovies::Twitter
       puts "#{index+1}: #{output}"
 
       if update_twitter == "true"
-      	twitter.update(output)
-      	puts ":: Twitter updated!"
+        twitter.update(output)
+        puts ":: Twitter updated!"
       end
     end
   end
