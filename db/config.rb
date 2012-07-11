@@ -13,8 +13,8 @@ class Event
   belongs_to :channel
   belongs_to :movie
 
-  property :begins,      Time
-  property :ends,        Time
+  property :begins,      DateTime
+  property :ends,        DateTime
 
   property :hagah_id,    String, :unique => true
 end
