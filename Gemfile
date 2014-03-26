@@ -1,6 +1,6 @@
-source :rubygems
+source "https://rubygems.org"
 
-gem "twitter"
+gem "twitter", :git => "git://github.com/sferik/twitter.git", :tag => "v3.1.1"
 
 gem "dm-core"
 gem "dm-sqlite-adapter"
