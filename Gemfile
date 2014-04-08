@@ -3,6 +3,9 @@ source :rubygems
 gem "twitter"
 gem "yajl-ruby"
 
+gem "rake"
+gem "sqlite3-ruby", "1.3.3"
+
 gem "dm-core"
 gem "dm-sqlite-adapter"
 gem "dm-migrations"

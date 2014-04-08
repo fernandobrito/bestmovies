@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 module BestMovies::Twitter
-  def self.update_with_best_movies_between(size=2, channel_group, rating, begins, ends, time, update_twitter)
+  def self.update_with_best_movies_between(size, channel_group, rating, begins, ends, time, update_twitter)
     twitter = BestMovies::Twitter.auth if update_twitter == "true"
 
     case channel_group

@@ -8,17 +8,17 @@
 class String
   alias_method :strip_old, :strip
   def strip
-    self.force_encoding('utf-8').gsub(/^[\302\240|\s]*|[\302\240|\s]*$/, '')
+    self.gsub(/^[\302\240|\s]*|[\302\240|\s]*$/, '')
   end
 
   def strip!
     before = self.reverse.reverse
-    self.force_encoding('utf-8').gsub!(/^[\302\240|\s]*|[\302\240|\s]*$/, '')
+    self.gsub!(/^[\302\240|\s]*|[\302\240|\s]*$/, '')
     before == self ? nil : self
   end
 
   def fix_spaces
-    self.force_encoding('utf-8').gsub "[\302\240|\s]", ""
+    self.gsub "[\302\240|\s]", ""
   end
 
   def fix_to_query
