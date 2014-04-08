@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 module BestMovies::Twitter
-  def self.update_with_best_movies_between(size, channel_group, rating, begins, ends, time, update_twitter)
+  def self.update_with_best_movies_between(size=2, channel_group, rating, begins, ends, time, update_twitter)
     twitter = BestMovies::Twitter.auth if update_twitter == "true"
 
     case channel_group
@@ -62,13 +62,12 @@ module BestMovies::Twitter
     config = ConfigStore.new(File.join(File.dirname(__FILE__), '..', '..', '.twitter'))
 
     if config['atoken'] && config['asecret']
-
-      twitter = Twitter::Client.new(
-        :consumer_key => config['token'],
-        :consumer_secret => config['secret'],
-        :oauth_token => config['atoken'],
-        :oauth_token_secret => config['asecret']
-      )
+      twitter = Twitter::REST::Client.new do |c|
+        c.consumer_key        = config['token']
+        c.consumer_secret     = config['secret']
+        c.access_token        = config['atoken']
+        c.access_token_secret = config['asecret']
+      end
 
       return twitter
 
